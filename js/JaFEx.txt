@@ -1,0 +1,51 @@
+str_count(str string, str search_val)			//Count of searchvalue in string
+str_pos(str string, str search_val)			//Positions of searchvalue in string out as array
+dechex(int number)					//convert decimal to hexadecimal out as string
+hexdec(str number)					//Convert hexadecimal to decimal out as int
+decbin(int number)					//Convert decimal to binary out as int
+bindec(int number)					//Convert binary to decimal out as int
+specchar(str string)					//Converts specialchars in HTMlcode
+soundex(str string)					//Convert string in sound-similarity string
+metaphone(str string)					//More accurate version of Soundex
+similar(str String, str string,int (1))			//Calculate the similarity of two strings
+fill.before(str,char,count)				//fill count of char before the string
+fill.after(str,char,count)				//fill count of char after the string
+fill.forend(str,char,count)				//fill count of char before an at the and of the string
+pick.before(str,char[,direction])			//returns the pick of the string before the first or last match of the char (direction: default first)
+pick.after(str,char[,direction])			//returns the pick of the string after the first or last match of the char (direction: default last)
+userMedia.getMicro(success,error)			//get Microphone input
+userMedia.getWebcam(success,error)			//capture the Webcam
+userMedia.getFull(success,error)			//capture the Webcam an Microphone
+audio.play(id)						//plays the <audio>-Element
+audio.pause(id)						//pause the <audio>-Element
+audio.stop(id)						//stops the <audio>-Element and set seek to beginning
+audio.volume(id,%)					//set the volume of <audio>-Element
+audio.current(id[,Time])				//get/set the currentTime of the <audio>-Element
+audio.duration(id)					//get the duration of the <audio>-Element
+audio.src(id,source)					//set the source of the <audio>-Element
+video.play(id)						//plays the <video>-Element
+video.pause(id)						//pause the <video>-Element
+video.stop(id)						//stops the <video>-Element and set seek to beginning
+video.volume(id,%)					//set the volume of <video>-Element
+video.current(id[,Time])				//get/set the currentTime of the <video>-Element
+video.duration(id)					//get the duration of the <video>-Element
+video.src(id,source)					//set the source of the <audio>-Element
+video.fullScreen(id)					//set fullscreen of the <video>-Element
+date(str)						//get the following date-element:
+				d	=>	Day (01-31)
+				D	=>	Dayname short (eg. Mon,Tue,...)
+				F	=>	Monthname (eg. March, April,...)
+				g	=>	Hours (1-12)
+				G	=>	Hours (0-23)
+				h	=>	Hours (01-12)
+				H	=>	Hours (00-23)
+				i	=>	Minutes (00-59)
+				j	=>	Day (1-31)
+				l	=>	Dayname full (eg. Monday, Tuesday,...)
+				m	=>	Month (01-12)
+				n	=>	Month (1-12)
+				s	=>	Seconds (00-59)
+				w	=>	Number of Day in Week (0-6)
+				y	=>	Year (01)
+				Y	=>	Year (2001)
+array_search(arr,char)					//searches elements of array who contains the serchkey

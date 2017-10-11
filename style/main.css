@@ -1,0 +1,79 @@
+@font-face {
+	font-family: "trans";
+	src: url('transports.ttf') format('truetype');
+}
+
+body {
+	margin-top: 50px;
+	font-family: arial, helvetica, sans serif;
+	color: #111;
+	overflow: hidden;
+	background-image: url('../contents/wp1.jpg');
+	background-size: 100%;
+	background-repeat: no-repeat;
+}
+
+h1 {
+	font-size: 60px;
+	text-shadow: 0px 0px 2px blue, 15px 10px 4px grey;
+}
+
+h2 {
+	font-size: 50px;
+	text-shadow: 15px 10px 4px grey;
+}
+
+h3 {
+	font-size: 40px;
+}
+
+
+#navi {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin-left: auto;
+	margin-right: auto;
+	width: 390px;
+	height: 40px;
+	border: 1px solid #999;
+	border-radius: 10px;
+	box-shadow: 0px 0px 10px 1px black;
+	padding: 5px;
+	background: rgba(255,255,255,0.6);
+	opacity: 0.1;
+	z-index: 101;
+	transition: all 0.5s ease-in-out;
+}
+
+#navi:hover {
+	opacity: 1;
+}
+
+#content {
+	cursor: default;
+}
+
+
+
+.nav {
+	font-family: trans;
+	color: #333;
+	font-size: 24px;
+	border: 1px solid #999;
+	border-radius: 40px;
+	height: 40px;
+	width: 40px;
+	background: lightgrey;
+}
+
+.nav:focus {
+	outline: none;
+}
+
+
+
+@keframes scrollup{
+	
+}

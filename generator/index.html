@@ -1,0 +1,156 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script src="../js/jquery-1.12.4.js"></script>
+	<script src="../js/jquery-ui.js"></script>
+	<script src="../js/JaFEx.js"></script>
+	<script src="../pages/sicherheit.pres"></script>
+	<script src="../js/core.js"></script>
+	<!--<link rel="stylesheet" type="text/css" href="../style/main.css" />-->
+<title>Generator @ Presentator</title>
+<style>
+body {
+	margin: 0px;
+	background:none;
+}
+
+#pages {
+	float: left;
+	max-height: 600px;
+	width: 20%;
+	overflow-y: auto;
+	border: 1px outset #999;
+}
+
+#contenti {
+	float: right;
+	min-height: 100px;
+	width: 75%;
+	border: 1px outset #999;
+}
+
+#add {
+	text-align: center;
+	background: #ccc;
+	border: 2px outset #ddd;
+	border-radius: 7px;
+	width: 180px;
+	height: 50px;
+	vertical-align: middle;
+	font-size: 36px;
+	font-weight: bold;
+	margin-left: auto;
+	margin-right: auto;
+	cursor: pointer;
+}
+
+#gen {
+	text-align: center;
+	background: #ccc;
+	border: 2px outset #ddd;
+	border-radius: 7px;
+	width: 180px;
+	height: 50px;
+	vertical-align: middle;
+	font-size: 36px;
+	font-weight: bold;
+	margin-left: auto;
+	margin-right: auto;
+	cursor: pointer;
+}
+
+#download {
+	text-align: center;
+	background: #ccc;
+	border: 2px outset #ddd;
+	border-radius: 7px;
+	width: 180px;
+	height: 50px;
+	vertical-align: middle;
+	font-size: 36px;
+	font-weight: bold;
+	margin-left: auto;
+	margin-right: auto;
+	cursor: pointer;
+}
+
+#prev {
+	overflow: hidden;
+	max-height: 100px;
+}
+
+.page {
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	height: 170px;
+	width: 170px;
+	border: 2px outset #eee;
+	background: #ddd;
+	border-radius: 7px;
+	padding: 5px;
+}
+
+</style>
+<script>
+var n = 0;
+var p = 0;
+var blender = '<select id="blend" size="1"><option value="shift">Ausblenden</option><option value="top">Nach oben</option><option value="bottom">Nach unten</option><option value="left">Nach links</option><option value="right">Nach rechts</option><option value="rotate_left">Nach links drehen</option><option value="rotate_right">Nach rechts drehen</option><option value="rotateX">X Achse drehen</option><option value="rotateY">Y Achse drehen</option><option value="rotateX_72">X Achse (schnell)</option><option value="rotateY_72">Y Achse (schnell)</option></select>';
+
+$(document).ready(function(){
+	$('#add').click(function(){
+		$('#gen').before('<div id="'+n+'" class="page" onclick="selection(\''+n+'\');"><span style="font-family:arial,helvetica,sans serif; font-weight:bold;">Seite '+n+'</span><span style="float:right;"><button onclick="pos('+n+','+0+');">&#8593;</button><button onclick="pos('+n+','+1+');">&#8595;</button></span><br>'+blender+'<div id="prev"></div></div>');
+		n++;
+	});
+	
+	$('#contenti').keyup(function(){
+		p.html($('#contenti').html());
+		//console.log(p);
+	});
+	
+	$('#gen').click(function(){
+		var pages = '';
+		var navi = 'var pages = [';
+		$('.page').each(function(){
+			var id = $(this).attr('id');
+			pages += 'var p'+id+' = ["'+$('#'+id+' #blend option:selected').val()+'","'+$('#'+id+' #prev').html()+'"];';
+			navi += 'p'+id+',';
+		});
+		var output = pages+' '+navi.substr(0,(navi.length-1))+'];';
+		$('#gen').after('<a href=\'data:text/plain;charset=UTF-8,'+output+'\' download="pages.pres"><div id="download">Download</div></a>').ready(function(){
+			$('a').click();
+		});
+		
+		//$('#download').remove();
+	});
+});
+
+function selection(id){
+	p = $('#'+id+' #prev');
+	$('#contenti').html($('#'+id+' #prev').html());
+}
+
+function pos(id,op){
+	var neu = op == 1 ? id < (n-1) ? id++ : id : id != 0 ? id-- : id;
+	var t1 = $('#'+id+' #prev').html();
+	var f1 = $('#'+id+' #blend option:selected').val();
+	var t2 = $('#'+neu+' #prev').html();
+	var f2 = $('#'+neu+' #blend option:selected').val();
+	$('#'+neu+' #prev').html(t1);
+	$('#'+neu+' #blend').val(f1);
+	//$('#'+neu+' #blend option[value='+f1+']').attr('selected','selected');
+	$('#'+id+' #prev').html(t2);
+	$('#'+id+' #blend').val(f2);
+	//$('#'+id+' #blend option[value='+f2+']').attr('selected','selected');
+	console.log(f1,f2);
+}
+</script>
+</head>
+
+<body>
+<div id="pages"><div id="add">+</div><div id="gen">Erstellen</div></div>
+<div id="contenti" contenteditable="true"></div>
+</body>
+</html>

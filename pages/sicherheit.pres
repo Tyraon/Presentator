@@ -1,0 +1,5 @@
+var pZ = ['shift',''];
+var p0 = ['shift','<center><h1>Willkommen</h1><h2>Dies ist di Präsentation</h2></center>'];
+var pX = ['shift',''];
+
+var pages = [pZ,p0,pX];
